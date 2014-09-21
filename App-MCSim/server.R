@@ -1,7 +1,7 @@
 # server.R script:
 library(shiny)
 library(ggplot2)
-library(knitr)
+library(markdown)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
@@ -19,16 +19,16 @@ shinyServer(function(input, output) {
         output$distPlot <- renderPlot({
                 dist <- Returns(input$n, input$mu, input$sd)
                 hist(dist, breaks=60, col="dark blue", border="white",
-                     main="*Eventually histogram ends up normally distributed(bell-shaped).",
+                     main="Histogram of Simulated Returns",
                      xlab="Simulated Annual Returns")
                 
         })
         output$text1 <- renderText({
-                paste(input$n, " Observations in our simulation")})
+                paste(input$n, "-Observations in our simulation")})
         output$text2 <- renderText({
-                paste(input$mu, "Percent Annual Return to simulate")})
+                paste(input$mu, "-Percent Annual Return in simulation")})
         output$text3 <- renderText({
-                paste(input$sd, "Percent volatility to simulate")
+                paste(input$sd, "-Percent volatility in simulation")
                 })
         
         }
